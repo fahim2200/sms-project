@@ -19,7 +19,7 @@
 
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow sticky-top">
             <div class="container">
-                <a href="" class="navbar-brand">SMS</a>
+                <a href="" class="navbar-brand">M SMS</a>
                 <ul class="navbar-nav">
                     <li><a href="{{ route('home') }}" class="nav-link">Home</a></li>
                     <li><a href="" class="nav-link">All Course</a></li>
@@ -38,7 +38,7 @@
                         <div class="card card-body rounded-0 bg-transparent text-light border-0">
                             <h3>About Institute</h3>
                             <hr/>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet cum eligendi est, facere</p>
+                            <p>To address the skill gap of HR in the industry, BASIS started its own training activities in 2007. Later in 2012, BASIS institutionalized its training activities and set up BASIS Institute of Technology & Management (BITM) with the support of World Bank.</p>
                         </div>
                     </div>
                     <div class="col-sm-4">
@@ -70,7 +70,7 @@
                 <hr class="bg-white mt-5"/>
                 <div class="row">
                     <div class="col-12">
-                        <p class="text-white text-center mb-0">Copyright@2022, All right reserved by Khorshed Alom</p>
+                        <p class="text-white text-center mb-0">Copyright@2022, All right reserved by Mahbubur Rahman</p>
                     </div>
                 </div>
             </div>
