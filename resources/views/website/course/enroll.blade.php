@@ -15,7 +15,7 @@
                         </div>
                         <div class="card-body">
                             <h5 class="text-warning text-center"></h5>
-                            <form action="" method="POST">
+                            <form action="{{route('new-enroll',['id' => $id])}}" method="POST">
                                 @csrf
                                 <div class="row">
                                     <label class="col-form-label col-md-3">Student Name</label>
@@ -32,7 +32,7 @@
                                 <div class="row my-3">
                                     <label class="col-form-label col-md-3">Phone Number</label>
                                     <div class="col-md-9">
-                                        <input type="number" class="form-control" name="phone"/>
+                                        <input type="number" class="form-control" name="mobile"/>
                                     </div>
                                 </div>
                                 <div class="row">

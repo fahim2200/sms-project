@@ -8,6 +8,11 @@
     <section class="py-5">
         <div class="container">
             <div class="row">
+                <div class="col">
+                    <p class="text-center text-success">{{Session::get('message')}}</p>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-md-6">
                     <div class="card card-body bg-dark">
                         <img src="{{ asset($subject->image) }}" alt="" class="w-100"/>
