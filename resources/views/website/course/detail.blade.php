@@ -27,7 +27,7 @@
                         <div><img src="{{asset($subject->teacher->image)}}" alt="" width="25%"></div>
                         <hr/>
                         <div>{!! $subject->short_description !!}</div>
-                        <a href="{{route('enroll-now',['id' => $subject->id])}}" class="btn btn-info opacity-75 w-25 mx-auto">Enroll Now</a>
+                        <a href="{{route('enroll-now',['id' => $subject->id])}}" class="btn btn-info opacity-75 mx-auto {{$check == true ? 'disabled btn-danger ' : ''}}">{{ $check == true ? 'Already Enrolled' : 'Enroll Now' }}</a>
                     </div>
                 </div>
             </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 use Session;
+use App\Models\Student;
 
 class AuthController extends Controller
 {
@@ -35,8 +36,7 @@ class AuthController extends Controller
 
                     return redirect('/teacher-dashboard');
                 } else {
-                    echo 'Invalid Password.';
-                    exit();
+                    return redirect()->back()->with('message', 'password is invalid');
                 }
             }
             else
@@ -45,7 +45,23 @@ class AuthController extends Controller
             }
         }
         else {
+            $this->user = Student::where('email', $request->email)->where('status', 1)->first();
+            if ($this->user) {
+                if (password_verify($request->password, $this->user->password)) {
+                    Session::put('student_id', $this->user->id);
+                    Session::put('student_name', $this->user->name);
 
+
+                    return redirect('/student-dashboard');
+                }
+                else {
+                    return redirect()->back()->with('message', 'password is invalid');
+                }
+            }
+            else
+            {
+                return redirect()->back()->with('message', 'email address is invalid or status is inactive');
+            }
         }
 
     }
@@ -58,4 +74,11 @@ class AuthController extends Controller
         return redirect('/');
     }
 
+    public function studentLogout(Request $request)
+    {
+        Session::forget('student_id');
+        Session::forget('student_name');
+
+        return redirect('/');
+    }
 }

@@ -9,6 +9,7 @@ use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\TeacherDashboardController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\AdminCourseController;
+use App\Http\Controllers\StudentDashboardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,10 +30,12 @@ Route::post('/new-enroll/{id}', [WebController::class, 'newEnroll'])->name('new-
 
 Route::get('/user-login', [AuthController::class, 'login'])->name('user-login');
 Route::post('/user-logout', [AuthController::class, 'logout'])->name('user-logout');
+Route::post('/student-logout', [AuthController::class, 'studentLogout'])->name('student-logout');
 Route::post('/new-login', [AuthController::class, 'newLogin'])->name('new-login');
 Route::get('/user-resister', [AuthController::class, 'register'])->name('user-resister');
 
 Route::get('/teacher-dashboard', [TeacherDashboardController::class, 'index'])->name('teacher-dashboard');
+Route::get('/student-dashboard', [StudentDashboardController::class, 'index'])->name('student-dashboard');
 Route::get('/add-subject', [SubjectController::class, 'index'])->name('add-subject');
 Route::post('/new-subject', [SubjectController::class, 'create'])->name('new-subject');
 Route::get('/manage-subject', [SubjectController::class, 'manage'])->name('manage-subject');
