@@ -10,6 +10,7 @@ use App\Http\Controllers\TeacherDashboardController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\AdminCourseController;
 use App\Http\Controllers\StudentDashboardController;
+use App\Http\Controllers\AdminStudentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,6 +40,8 @@ Route::get('/student-dashboard', [StudentDashboardController::class, 'index'])->
 Route::get('/add-subject', [SubjectController::class, 'index'])->name('add-subject');
 Route::post('/new-subject', [SubjectController::class, 'create'])->name('new-subject');
 Route::get('/manage-subject', [SubjectController::class, 'manage'])->name('manage-subject');
+Route::get('/approved-course', [SubjectController::class, 'approved'])->name('approved-course');
+Route::get('/enrolled-student/{id}', [SubjectController::class, 'enrolledStudent'])->name('enrolled-student');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard',[DashboardController::class, 'index'])->name('dashboard');
@@ -61,4 +64,11 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/delete-teacher/{id}',[Tea
 Route::middleware(['auth:sanctum', 'verified'])->get('/manage-course',[AdminCourseController::class, 'manage'])->name('manage-course');
 Route::middleware(['auth:sanctum', 'verified'])->get('/view-detail/{id}',[AdminCourseController::class, 'detail'])->name('view-detail');
 Route::middleware(['auth:sanctum', 'verified'])->get('/update-status/{id}',[AdminCourseController::class, 'updateStatus'])->name('update-status');
+
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/manage-student',[AdminStudentController::class, 'manageStudent'])->name('manage-student');
+Route::middleware(['auth:sanctum', 'verified'])->get('/manage-student-course',[AdminStudentController::class, 'manageStudentCourse'])->name('manage-student-course');
+Route::middleware(['auth:sanctum', 'verified'])->get('/student-status/{id}',[AdminStudentController::class, 'updateStatus'])->name('student-status');
+Route::middleware(['auth:sanctum', 'verified'])->get('/update-enroll-status/{id}',[AdminStudentController::class, 'updateEnrollStatus'])->name('update-enroll-status');
+
 

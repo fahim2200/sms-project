@@ -341,7 +341,8 @@
                                 <span>Student Module</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="#">Manage Student</a></li>
+                                <li><a href="{{route('manage-student')}}">Manage Student</a></li>
+                                <li><a href="{{route('manage-student-course')}}">Manage Student Course</a></li>
                             </ul>
                         </li>
                     </ul>
