@@ -38,19 +38,22 @@ Route::get('/user-resister', [AuthController::class, 'register'])->name('user-re
 
 Route::post('/new-registration', [AuthController::class, 'newRegistration'])->name('new-registration');
 
-Route::get('/teacher-dashboard', [TeacherDashboardController::class, 'index'])->name('teacher-dashboard');
-Route::get('/student-dashboard', [StudentDashboardController::class, 'index'])->name('student-dashboard');
-Route::get('/student-profile', [StudentDashboardController::class, 'profile'])->name('student-profile');
-Route::post('/update-student-profile/{id}', [StudentDashboardController::class, 'updateProfile'])->name('update-student-profile');
-Route::get('/change-password', [StudentDashboardController::class, 'changePassword'])->name('change-password');
-Route::post('/update-student-password/{id}', [StudentDashboardController::class, 'updatePassword'])->name('update-student-password');
+Route::middleware(['student'])->group(function () {
+    Route::get('/student-dashboard', [StudentDashboardController::class, 'index'])->name('student-dashboard');
+    Route::get('/student-profile', [StudentDashboardController::class, 'profile'])->name('student-profile');
+    Route::post('/update-student-profile/{id}', [StudentDashboardController::class, 'updateProfile'])->name('update-student-profile');
+    Route::get('/change-password', [StudentDashboardController::class, 'changePassword'])->name('change-password');
+    Route::post('/update-student-password/{id}', [StudentDashboardController::class, 'updatePassword'])->name('update-student-password');
+
+});
 
 
-Route::get('/add-subject', [SubjectController::class, 'index'])->name('add-subject');
-Route::post('/new-subject', [SubjectController::class, 'create'])->name('new-subject');
-Route::get('/manage-subject', [SubjectController::class, 'manage'])->name('manage-subject');
-Route::get('/approved-course', [SubjectController::class, 'approved'])->name('approved-course');
-Route::get('/enrolled-student/{id}', [SubjectController::class, 'enrolledStudent'])->name('enrolled-student');
+Route::middleware(['teacher'])->get('/teacher-dashboard', [TeacherDashboardController::class, 'index'])->name('teacher-dashboard');
+Route::middleware(['teacher'])->get('/add-subject', [SubjectController::class, 'index'])->name('add-subject');
+Route::middleware(['teacher'])->post('/new-subject', [SubjectController::class, 'create'])->name('new-subject');
+Route::middleware(['teacher'])->get('/manage-subject', [SubjectController::class, 'manage'])->name('manage-subject');
+Route::middleware(['teacher'])->get('/approved-course', [SubjectController::class, 'approved'])->name('approved-course');
+Route::middleware(['teacher'])->get('/enrolled-student/{id}', [SubjectController::class, 'enrolledStudent'])->name('enrolled-student');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard',[DashboardController::class, 'index'])->name('dashboard');

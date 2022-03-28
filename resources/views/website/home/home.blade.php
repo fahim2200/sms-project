@@ -11,7 +11,7 @@
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <div class="card card-body rounded-0 bg-opacity-75 bg-info">
-                            <h3 class="card-title text-center">BITM</h3>
+                            <h4 class="card-title text-center">{{Session::get('message')}}</h4>
                             <hr/>
                             <p class="text-center"><b>746+ Regular programs 327+ Trainers 58+ Client Organizations</b></p>
                         </div>
